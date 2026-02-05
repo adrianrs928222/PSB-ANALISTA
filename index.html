@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PSB Analista | ProStakeBetting</title>
+  <meta name="description" content="ProStakeBetting (PSB Analista). Únete al canal de Telegram y síguenos en Instagram y TikTok." />
+  <meta name="theme-color" content="#0b1220" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="PSB Analista | ProStakeBetting" />
+  <meta property="og:description" content="Canal oficial. Únete en Telegram." />
+  <meta property="og:type" content="website" />
+  <!-- Si subes el logo a la web, puedes poner aquí una URL absoluta -->
+  <!-- <meta property="og:image" content="https://tudominio.com/logo.png" /> -->
+
+  <!-- Iconos -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    :root{
+      /* Paleta “empresa seria” + acentos del logo */
+      --bg0:#070b14;
+      --bg1:#0b1220;
+      --bg2:#0a1c2a;
+      --accent:#22c55e;         /* verde */
+      --accent2:#f59e0b;        /* dorado */
+      --accent3:#38bdf8;        /* azul */
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.78);
+      --muted2:rgba(255,255,255,.62);
+      --card:rgba(255,255,255,.06);
+      --card2:rgba(255,255,255,.09);
+      --stroke:rgba(255,255,255,.14);
+      --shadow: 0 24px 80px rgba(0,0,0,.55);
+      --shadow2: 0 14px 40px rgba(0,0,0,.35);
+      --radius:22px;
+      --radius2:18px;
+      --max: 560px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 900px at 20% 10%, rgba(34,197,94,.18), transparent 55%),
+        radial-gradient(900px 700px at 85% 25%, rgba(245,158,11,.16), transparent 55%),
+        radial-gradient(800px 650px at 60% 90%, rgba(56,189,248,.12), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1) 40%, var(--bg2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px 16px 36px;
+      overflow-x:hidden;
+    }
+
+    /* Fondo animado (brillos) */
+    .glow{
+      position:fixed;
+      inset:-20%;
+      pointer-events:none;
+      filter: blur(30px);
+      opacity:.8;
+      animation: floatGlow 10s ease-in-out infinite;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(34,197,94,.22), transparent 35%),
+        radial-gradient(circle at 70% 40%, rgba(245,158,11,.18), transparent 38%),
+        radial-gradient(circle at 55% 75%, rgba(56,189,248,.15), transparent 40%);
+      z-index:-2;
+    }
+    @keyframes floatGlow{
+      0%{ transform: translate3d(0,0,0) scale(1); }
+      50%{ transform: translate3d(2%, -2%, 0) scale(1.02); }
+      100%{ transform: translate3d(0,0,0) scale(1); }
+    }
+
+    .wrap{
+      width:min(var(--max), 100%);
+      text-align:center;
+      position:relative;
+    }
+
+    /* Barra superior “empresa” */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      margin-bottom:16px;
+      opacity:0;
+      transform: translateY(10px);
+      animation: enter 700ms ease forwards;
+      animation-delay: 80ms;
+    }
+    .pill{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      padding:10px 14px;
+      border:1px solid var(--stroke);
+      border-radius:999px;
+      background: rgba(255,255,255,.04);
+      box-shadow: var(--shadow2);
+      backdrop-filter: blur(10px);
+      font-size:12px;
+      letter-spacing:.35px;
+      color:var(--muted);
+      text-transform:uppercase;
+    }
+    .dot{
+      width:8px;height:8px;border-radius:50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(34,197,94,.12);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse{
+      0%,100%{ transform: scale(1); opacity:.9; }
+      50%{ transform: scale(1.2); opacity:1; }
+    }
+
+    /* Hero */
+    .hero{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:22px 18px 18px;
+      backdrop-filter: blur(12px);
+      position:relative;
+      overflow:hidden;
+      opacity:0;
+      transform: translateY(14px);
+      animation: enter 800ms ease forwards;
+      animation-delay: 140ms;
+    }
+
+    /* brillo diagonal */
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background: linear-gradient(120deg, transparent 40%, rgba(255,255,255,.10) 50%, transparent 60%);
+      transform: translateX(-40%) rotate(10deg);
+      animation: shine 4.2s ease-in-out infinite;
+      pointer-events:none;
+    }
+    @keyframes shine{
+      0%{ transform: translateX(-45%) rotate(10deg); opacity:.35; }
+      50%{ transform: translateX(35%) rotate(10deg); opacity:.55; }
+      100%{ transform: translateX(85%) rotate(10deg); opacity:.35; }
+    }
+
+    @keyframes enter{
+      to{ opacity:1; transform: translateY(0); }
+    }
+
+    .brandRow{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      margin-bottom:14px;
+    }
+
+    .logo{
+      width:92px;
+      height:92px;
+      border-radius:50%;
+      border:3px solid rgba(255,255,255,.75);
+      background: rgba(0,0,0,.35);
+      overflow:hidden;
+      box-shadow: 0 18px 55px rgba(0,0,0,.5);
+      position:relative;
+      transform: translateZ(0);
+    }
+    .logo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transform: scale(1.02);
+    }
+
+    .title{
+      margin:0;
+      font-size:34px;
+      line-height:1.06;
+      letter-spacing:.7px;
+      font-weight:950;
+      text-transform:uppercase;
+    }
+    .tagline{
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.35;
+    }
+    .badgeRow{
+      margin-top:14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:center;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.05);
+      border:1px solid var(--stroke);
+      color:var(--muted);
+      font-size:12px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
+    }
+    .badge i{ color: rgba(255,255,255,.75); }
+
+    /* CTA principal */
+    .cta{
+      margin-top:18px;
+      display:grid;
+      gap:12px;
+    }
+    .btn{
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:14px 16px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.18);
+      text-decoration:none;
+      font-weight:900;
+      letter-spacing:.35px;
+      transition: transform .18s ease, filter .18s ease, background .18s ease;
+      position:relative;
+      overflow:hidden;
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn-primary{
+      background: linear-gradient(90deg, rgba(34,197,94,.95), rgba(245,158,11,.92));
+      color:#071014;
+      box-shadow: 0 18px 55px rgba(34,197,94,.16), 0 14px 42px rgba(245,158,11,.12);
+    }
+    .btn-primary::before{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.55), transparent 35%);
+      transform: translateX(-40%);
+      opacity:.55;
+      animation: sweep 2.7s ease-in-out infinite;
+      pointer-events:none;
+    }
+    @keyframes sweep{
+      0%{ transform: translateX(-45%); opacity:.25; }
+      50%{ transform: translateX(35%); opacity:.55; }
+      100%{ transform: translateX(85%); opacity:.25; }
+    }
+
+    .btn-secondary{
+      background: rgba(255,255,255,.05);
+      color:var(--text);
+    }
+    .btn:hover{ transform: translateY(-2px); filter: brightness(1.02); }
+    .btn:active{ transform: translateY(0px) scale(.99); }
+
+    .btn .right{
+      margin-left:auto;
+      opacity:.9;
+      font-size:14px;
+    }
+
+    /* Tarjetas inferiores */
+    .grid{
+      margin-top:14px;
+      display:grid;
+      gap:12px;
+      grid-template-columns: 1fr;
+      opacity:0;
+      transform: translateY(14px);
+      animation: enter 850ms ease forwards;
+      animation-delay: 240ms;
+    }
+    .card{
+      text-align:left;
+      background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.03));
+      border:1px solid var(--stroke);
+      border-radius: var(--radius2);
+      padding:14px 14px;
+      box-shadow: 0 14px 40px rgba(0,0,0,.32);
+      backdrop-filter: blur(10px);
+      position:relative;
+      overflow:hidden;
+    }
+    .card h3{
+      margin:0 0 6px;
+      font-size:14px;
+      letter-spacing:.4px;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.9);
+    }
+    .card p{
+      margin:0;
+      font-size:13px;
+      color:var(--muted2);
+      line-height:1.45;
+    }
+
+    /* Social icons row */
+    .social{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      margin-top:14px;
+      opacity:0;
+      transform: translateY(10px);
+      animation: enter 800ms ease forwards;
+      animation-delay: 320ms;
+    }
+    .social a{
+      width:46px;height:46px;border-radius:14px;
+      display:grid;place-items:center;
+      text-decoration:none;
+      color:rgba(255,255,255,.92);
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.05);
+      box-shadow: 0 10px 26px rgba(0,0,0,.28);
+      transition: transform .18s ease, background .18s ease, filter .18s ease;
+      position:relative;
+      overflow:hidden;
+    }
+    .social a::before{
+      content:"";
+      position:absolute; inset:-40%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.22), transparent 42%);
+      transform: translateX(-30%);
+      opacity:.6;
+      pointer-events:none;
+    }
+    .social a:hover{ transform: translateY(-2px); background: rgba(255,255,255,.07); }
+
+    /* Footer */
+    .footer{
+      margin-top:16px;
+      font-size:12px;
+      color:rgba(255,255,255,.55);
+      line-height:1.4;
+      opacity:0;
+      transform: translateY(10px);
+      animation: enter 900ms ease forwards;
+      animation-delay: 380ms;
+    }
+    .footer a{
+      color:rgba(255,255,255,.72);
+      text-decoration:none;
+      border-bottom:1px dotted rgba(255,255,255,.35);
+    }
+
+    /* “Reduce motion” */
+    @media (prefers-reduced-motion: reduce){
+      *{ animation:none !important; transition:none !important; }
+      .hero, .topbar, .grid, .social, .footer{ opacity:1 !important; transform:none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="glow" aria-hidden="true"></div>
+
+  <main class="wrap">
+    <div class="topbar">
+      <div class="pill"><span class="dot"></span>Canal oficial · PSB Analista</div>
+    </div>
+
+    <section class="hero">
+      <div class="brandRow">
+        <div class="logo" aria-label="Logo ProStakeBetting">
+          <!-- IMPORTANTE: guarda tu logo como "logo.png" en la misma carpeta que este index.html -->
+          <img src="logo.png" alt="ProStakeBetting (PSB) Logo">
+        </div>
+      </div>
+
+      <h1 class="title">PSB ANALISTA</h1>
+      <p class="tagline">
+        ProStakeBetting · Apuestas deportivas con enfoque en <strong>gestión de stake</strong>,
+        disciplina y análisis.
+      </p>
+
+      <div class="badgeRow">
+        <div class="badge"><i class="fa-solid fa-shield-halved"></i> Marca verificada</div>
+        <div class="badge"><i class="fa-solid fa-chart-line"></i> Enfoque analítico</div>
+        <div class="badge"><i class="fa-solid fa-clipboard-check"></i> Gestión de banca</div>
+      </div>
+
+      <div class="cta">
+        <a class="btn btn-primary" href="https://t.me/prostakebetting" target="_blank" rel="noopener">
+          <i class="fa-brands fa-telegram"></i>
+          Unirme al canal de Telegram
+          <span class="right"><i class="fa-solid fa-arrow-right"></i></span>
+        </a>
+
+        <a class="btn btn-secondary" href="https://t.me/prostakebetting" target="_blank" rel="noopener">
+          <i class="fa-solid fa-bell"></i>
+          Activar notificaciones
+          <span class="right"><i class="fa-solid fa-chevron-right"></i></span>
+        </a>
+      </div>
+
+      <div class="social" aria-label="Redes sociales">
+        <a href="https://instagram.com/psbanalista" target="_blank" rel="noopener" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@psbanalista" target="_blank" rel="noopener" aria-label="TikTok">
+          <i class="fa-brands fa-tiktok"></i>
+        </a>
+        <a href="https://t.me/prostakebetting" target="_blank" rel="noopener" aria-label="Telegram">
+          <i class="fa-brands fa-telegram"></i>
+        </a>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Qué encontrarás</h3>
+        <p>
+          Publicaciones claras y directas, con control de stake, enfoque a largo plazo y
+          comunicación transparente.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Normas de responsabilidad</h3>
+        <p>
+          Apostar conlleva riesgo. Juega con responsabilidad y solo con dinero que puedas permitirte perder.
+          No se garantizan resultados.
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      © <span id="y"></span> ProStakeBetting · PSB Analista ·
+      <a href="https://t.me/prostakebetting" target="_blank" rel="noopener">Canal oficial</a>
+    </footer>
+  </main>
+
+  <script>
+    // Año automático
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Micro-animación al mover el móvil/ratón (muy “pro” pero ligera)
+    // Se desactiva con prefers-reduced-motion.
+    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduce) {
+      const hero = document.querySelector(".hero");
+      const wrap = document.querySelector(".wrap");
+
+      function tilt(x, y){
+        const rect = wrap.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dx = (x - cx) / rect.width;
+        const dy = (y - cy) / rect.height;
+
+        const rx = (dy * -6).toFixed(2);
+        const ry = (dx *  8).toFixed(2);
+
+        hero.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(0)`;
+      }
+
+      window.addEventListener("mousemove", (e) => tilt(e.clientX, e.clientY), {passive:true});
+      window.addEventListener("mouseleave", () => hero.style.transform = "", {passive:true});
+    }
+  </script>
+</body>
+</html>
